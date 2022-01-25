@@ -72,6 +72,21 @@ export class AppComponent implements OnInit {
       }
     );
   }
+  public searchClients(key: string): void {
+    console.log(key);
+    const results: Client[] = [];
+    for (const client of this.clients) {
+      if (client.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || client.surname.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || client.clientCode.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(client);
+      }
+    }
+    this.clients = results;
+    if (results.length === 0 || !key) {
+      this.getClients();
+    }
+  }
 
 
 
@@ -99,21 +114,5 @@ export class AppComponent implements OnInit {
 
   }
 }
-/*
-  public searchClients(key: string): void {
-    console.log(key);
-    const results: Client[] = [];
-    for (const client of this.clients) {
-      if (client.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || client.surname.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || client.clientCode.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
-        results.push(client);
-      }
-    }
-    this.clients = results;
-    if (results.length === 0 || !key) {
-      this.getClients();
-    }
-  }
 
-*/
+

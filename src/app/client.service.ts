@@ -25,6 +25,4 @@ export class ClientService{
     return this.http.delete<void>('http://localhost:8080/api/delete/' + clientId)
   }
 
-
-
 }
